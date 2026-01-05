@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethiopian Government Logo - Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .preview-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .logo-preview {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .logo-size {
+            text-align: center;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ethiopian Government Logo - Favicon Generator</h1>
+    
+    <div class="preview-section">
+        <h2>Original SVG Logo</h2>
+        <div style="text-align: center; margin: 20px 0;">
+            <div style="display: inline-block; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="128" height="128">
+                    <!-- Background Circle -->
+                    <circle cx="32" cy="32" r="30" fill="#15803d" stroke="#166534" stroke-width="2"/>
+                    
+                    <!-- Ethiopian Flag Colors (Simplified) -->
+                    <rect x="12" y="28" width="8" height="8" fill="#16a34a" opacity="0.8"/>
+                    <rect x="20" y="28" width="8" height="8" fill="#facc15" opacity="0.8"/>
+                    <rect x="28" y="28" width="8" height="8" fill="#dc2626" opacity="0.8"/>
+                    
+                    <!-- Lion Silhouette (Simplified) -->
+                    <g fill="#ffffff">
+                        <!-- Lion Head -->
+                        <circle cx="44" cy="24" r="6"/>
+                        <!-- Lion Mane -->
+                        <circle cx="38" cy="20" r="3" opacity="0.8"/>
+                        <circle cx="50" cy="20" r="3" opacity="0.8"/>
+                        <circle cx="38" cy="28" r="3" opacity="0.8"/>
+                        <circle cx="50" cy="28" r="3" opacity="0.8"/>
+                        <!-- Lion Body -->
+                        <ellipse cx="44" cy="38" rx="8" ry="6"/>
+                    </g>
+                    
+                    <!-- Star (Ethiopian Emblem Symbol) -->
+                    <g fill="#facc15" transform="translate(20,45) scale(0.8)">
+                        <polygon points="8,0 9.5,5.5 15,5.5 10.5,9 12,14.5 8,11.5 4,14.5 5.5,9 1,5.5 6.5,5.5"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>Generated Favicon Sizes</h2>
+        <div class="logo-preview">
+            <div class="logo-size">
+                <p><strong>16×16</strong> (Browser Tab)</p>
+                <canvas id="canvas16" width="16" height="16"></canvas>
+            </div>
+            <div class="logo-size">
+                <p><strong>32×32</strong> (Bookmarks)</p>
+                <canvas id="canvas32" width="32" height="32"></canvas>
+            </div>
+            <div class="logo-size">
+                <p><strong>48×48</strong> (Desktop)</p>
+                <canvas id="canvas48" width="48" height="48"></canvas>
+            </div>
+            <div class="logo-size">
+                <p><strong>180×180</strong> (Apple Touch)</p>
+                <canvas id="canvas180" width="180" height="180" style="width: 90px; height: 90px;"></canvas>
+            </div>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <button onclick="generateAllSizes()" style="background: #15803d; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px;">
+                Generate All Favicon Sizes
+            </button>
+        </div>
+        
+        <div id="downloadLinks" style="margin-top: 20px;"></div>
+    </div>
+
+    <div class="instructions">
+        <h3>Instructions:</h3>
+        <ol>
+            <li>Click "Generate All Favicon Sizes" to create the favicon files</li>
+            <li>Download each size and save them to your <code>public/</code> folder</li>
+            <li>The HTML file will be updated automatically to use the new favicons</li>
+        </ol>
+    </div>
+
+    <script>
+        const svgString = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="30" fill="#15803d" stroke="#166534" stroke-width="2"/>
+            <rect x="12" y="28" width="8" height="8" fill="#16a34a" opacity="0.8"/>
+            <rect x="20" y="28" width="8" height="8" fill="#facc15" opacity="0.8"/>
+            <rect x="28" y="28" width="8" height="8" fill="#dc2626" opacity="0.8"/>
+            <g fill="#ffffff">
+                <circle cx="44" cy="24" r="6"/>
+                <circle cx="38" cy="20" r="3" opacity="0.8"/>
+                <circle cx="50" cy="20" r="3" opacity="0.8"/>
+                <circle cx="38" cy="28" r="3" opacity="0.8"/>
+                <circle cx="50" cy="28" r="3" opacity="0.8"/>
+                <ellipse cx="44" cy="38" rx="8" ry="6"/>
+            </g>
+            <g fill="#facc15" transform="translate(20,45) scale(0.8)">
+                <polygon points="8,0 9.5,5.5 15,5.5 10.5,9 12,14.5 8,11.5 4,14.5 5.5,9 1,5.5 6.5,5.5"/>
+            </g>
+        </svg>`;
+
+        function generateFavicon(size, canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            const img = new Image();
+            const svgBlob = new Blob([svgString], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = function() {
+                ctx.clearRect(0, 0, size, size);
+                ctx.drawImage(img, 0, 0, size, size);
+                
+                // Create download link
+                canvas.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = URL.createObjectURL(blob);
+                    link.textContent = `Download ${filename}`;
+                    link.style.display = 'inline-block';
+                    link.style.margin = '5px 10px';
+                    link.style.padding = '5px 10px';
+                    link.style.background = '#15803d';
+                    link.style.color = 'white';
+                    link.style.textDecoration = 'none';
+                    link.style.borderRadius = '3px';
+                    
+                    document.getElementById('downloadLinks').appendChild(link);
+                }, 'image/png');
+                
+                URL.revokeObjectURL(url);
+            };
+            
+            img.src = url;
+        }
+
+        function generateAllSizes() {
+            document.getElementById('downloadLinks').innerHTML = '<h4>Download Generated Favicons:</h4>';
+            
+            generateFavicon(16, 'canvas16', 'favicon-16x16.png');
+            generateFavicon(32, 'canvas32', 'favicon-32x32.png');
+            generateFavicon(48, 'canvas48', 'favicon-48x48.png');
+            generateFavicon(180, 'canvas180', 'apple-touch-icon.png');
+            
+            // Also generate ICO format data
+            setTimeout(() => {
+                const canvas32 = document.getElementById('canvas32');
+                canvas32.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.download = 'favicon.ico';
+                    link.href = URL.createObjectURL(blob);
+                    link.textContent = 'Download favicon.ico';
+                    link.style.display = 'inline-block';
+                    link.style.margin = '5px 10px';
+                    link.style.padding = '5px 10px';
+                    link.style.background = '#dc2626';
+                    link.style.color = 'white';
+                    link.style.textDecoration = 'none';
+                    link.style.borderRadius = '3px';
+                    
+                    document.getElementById('downloadLinks').appendChild(link);
+                }, 'image/png');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

@@ -1,49 +1,173 @@
-# Getting Started with Create React App
+# Ethiopian Government Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive website for the Federal Government of Ethiopia built with React and Tailwind CSS.
 
-## Available Scripts
+## 🏗️ Project Structure
 
-In the project directory, you can run:
+```
+src/
+├── components/           # Reusable UI components
+│   ├── Header.js        # Site header with language selector
+│   ├── Navigation.js    # Main navigation menu
+│   ├── Hero.js          # Homepage hero section with search
+│   ├── AlertBanner.js   # Emergency alerts and notices
+│   ├── PopularServices.js # Most used government services
+│   ├── GovernmentServices.js # All service categories
+│   ├── RegionalServices.js # Regional state services
+│   ├── NewsSection.js   # Latest news and updates
+│   ├── Sidebar.js       # Ministries and help section
+│   ├── Footer.js        # Site footer with links
+│   ├── Layout.js        # Main layout wrapper
+│   └── index.js         # Component exports
+├── pages/               # Full page components
+│   ├── Home.js          # Homepage with all sections
+│   ├── Services.js      # Government services directory
+│   ├── News.js          # News and announcements
+│   ├── About.js         # About Ethiopia page
+│   └── index.js         # Page exports
+├── data/                # Static data and content
+│   └── govData.js       # Government services, news, etc.
+├── utils/               # Helper functions and constants
+│   ├── helpers.js       # Utility functions
+│   └── constants.js     # App constants and config
+└── App.js               # Main application component
+```
 
-### `npm start`
+## 🚀 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Multilingual Support**: Amharic, English, and Oromifa
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **Government Services**: Comprehensive directory of all services
+- **News & Updates**: Latest government announcements
+- **Regional Services**: State-specific services and information
+- **Search Functionality**: Find services and information quickly
+- **Ethiopian Design**: Colors and styling inspired by Ethiopian flag
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🎨 Design System
 
-### `npm test`
+### Colors (Ethiopian Flag Theme)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Green**: `#166534` (Primary government color)
+- **Yellow**: `#facc15` (Accent and highlights)
+- **Red**: `#dc2626` (Alerts and important notices)
 
-### `npm run build`
+### Typography
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Headers: Bold, large text for maximum readability
+- Body: Clean, accessible fonts supporting multiple languages
+- Amharic text: Properly styled Ethiopian script
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📱 Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Layout Components
 
-### `npm run eject`
+- **Header**: Branding, language selector, mobile menu
+- **Navigation**: Main menu with government sections
+- **Footer**: Links, contact info, government branding
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Content Components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Hero**: Search functionality and main call-to-action
+- **AlertBanner**: Important government notices
+- **PopularServices**: Quick access to most-used services
+- **GovernmentServices**: Complete service directory
+- **NewsSection**: Latest updates and announcements
+- **Sidebar**: Ministry links and citizen support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Page Components
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Home**: Complete homepage with all sections
+- **Services**: Searchable government services directory
+- **News**: Government news and announcements
+- **About**: Information about Ethiopia and government
 
-## Learn More
+## 🛠️ Technologies Used
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **React 18**: Modern React with hooks and functional components
+- **Tailwind CSS**: Utility-first CSS framework
+- **Lucide React**: Modern icon library
+- **JavaScript ES6+**: Modern JavaScript features
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📊 Data Structure
+
+All government data is centralized in `src/data/govData.js`:
+
+- `popularServices`: Most frequently accessed services
+- `categories`: Government service categories with icons and counts
+- `newsItems`: Latest government news and updates
+- `regions`: Ethiopian regional states and city administrations
+- `ministries`: Federal government ministries
+- `footerLinks`: Footer navigation and legal links
+
+## 🔧 Development
+
+### Prerequisites
+
+- Node.js 16+ and npm
+- Modern web browser
+
+### Installation
+
+```bash
+npm install
+npm start
+```
+
+### Available Scripts
+
+- `npm start`: Development server
+- `npm run build`: Production build
+- `npm test`: Run tests
+- `npm run eject`: Eject from Create React App
+
+## 🌍 Multilingual Support
+
+The website supports three languages:
+
+- **English**: Default language for international users
+- **አማርኛ (Amharic)**: Federal working language
+- **Afaan Oromoo (Oromifa)**: Regional language support
+
+Language switching is handled via the header dropdown and maintains user preference.
+
+## 📱 Mobile Responsiveness
+
+- Responsive grid system for all screen sizes
+- Mobile-first design approach
+- Touch-friendly interface elements
+- Optimized performance on mobile devices
+
+## ♿ Accessibility
+
+- Semantic HTML structure
+- ARIA labels and roles where needed
+- Keyboard navigation support
+- Color contrast compliance
+- Screen reader friendly
+
+## 🚀 Future Enhancements
+
+- [ ] User authentication and citizen portal
+- [ ] Online service applications
+- [ ] Payment integration for government services
+- [ ] Real-time chat support
+- [ ] Advanced search with filters
+- [ ] Document upload and tracking
+- [ ] Multi-factor authentication
+- [ ] API integration with government databases
+
+## 📞 Support
+
+For technical support or government service inquiries:
+
+- **Phone**: 8080 (Toll Free)
+- **Email**: info@ethiopia.gov.et
+- **Address**: Addis Ababa, Ethiopia
+
+## 📄 License
+
+© 2025 Federal Government of Ethiopia. All rights reserved.
+Powered by Ministry of Innovation and Technology.
 
 ### Code Splitting
 

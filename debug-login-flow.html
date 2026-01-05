@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Login Flow</title>
+</head>
+<body>
+    <h1>Debug Login Flow</h1>
+    <div>
+        <h2>Step 1: Login as Admin</h2>
+        <button onclick="loginAsAdmin()">Login as Admin</button>
+        <div id="loginResult"></div>
+    </div>
+    
+    <div>
+        <h2>Step 2: Check Auth State</h2>
+        <button onclick="checkAuthState()">Check Auth State</button>
+        <div id="authState"></div>
+    </div>
+    
+    <div>
+        <h2>Step 3: Test Role Check</h2>
+        <button onclick="testRoleCheck()">Test Role Check</button>
+        <div id="roleResult"></div>
+    </div>
+    
+    <div>
+        <h2>Step 4: Navigate to Add User</h2>
+        <button onclick="navigateToAddUser()">Navigate to /users/add</button>
+    </div>
+
+    <script>
+        function loginAsAdmin() {
+            // Simulate admin login
+            const token = 'mock-jwt-token-' + Date.now();
+            const userData = {
+                id: 1,
+                username: 'admin',
+                email: 'admin@gov.et',
+                firstName: 'System',
+                lastName: 'Administrator',
+                role: 'ADMIN',
+                isActive: true,
+                isVerified: true
+            };
+            
+            localStorage.setItem('authToken', token);
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            document.getElementById('loginResult').innerHTML = 
+                '<div style="color: green;">✅ Admin login successful</div>' +
+                '<div>Token: ' + token.substring(0, 30) + '...</div>' +
+                '<div>User: ' + JSON.stringify(userData, null, 2) + '</div>';
+        }
+        
+        function checkAuthState() {
+            const token = localStorage.getItem('authToken');
+            const userData = localStorage.getItem('userData');
+            
+            document.getElementById('authState').innerHTML = 
+                '<div>Token exists: ' + (token ? '✅' : '❌') + '</div>' +
+                '<div>User data exists: ' + (userData ? '✅' : '❌') + '</div>' +
+                (userData ? '<div>User: ' + userData + '</div>' : '');
+        }
+        
+        function testRoleCheck() {
+            const userData = localStorage.getItem('userData');
+            if (userData) {
+                const user = JSON.parse(userData);
+                const hasAdminRole = user.role === 'ADMIN';
+                const hasEditorRole = ['ADMIN', 'EDITOR'].includes(user.role);
+                
+                document.getElementById('roleResult').innerHTML = 
+                    '<div>User role: ' + user.role + '</div>' +
+                    '<div>Has ADMIN role: ' + (hasAdminRole ? '✅' : '❌') + '</div>' +
+                    '<div>Has EDITOR role (Admin/Editor): ' + (hasEditorRole ? '✅' : '❌') + '</div>';
+            } else {
+                document.getElementById('roleResult').innerHTML = 
+                    '<div style="color: red;">❌ No user data found</div>';
+            }
+        }
+        
+        function navigateToAddUser() {
+            window.open('http://localhost:3000/users/add', '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import AppV6 from './AppV6';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// Try the simpler React Router v6 style configuration
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <AppV6 />
 );
 
 // If you want to start measuring performance in your app, pass a function

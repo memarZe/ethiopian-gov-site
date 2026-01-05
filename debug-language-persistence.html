@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Language Persistence Debug</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .status { padding: 10px; margin: 10px 0; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        #results { margin-top: 20px; max-height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Language Persistence Debug Tool</h1>
+    
+    <div class="info">
+        <strong>Instructions:</strong> 
+        <ol>
+            <li>Open your Ethiopian Government Site in another tab</li>
+            <li>Change the language using the dropdown in the header</li>
+            <li>Navigate to different pages</li>
+            <li>Come back here and check the localStorage state</li>
+        </ol>
+    </div>
+
+    <div>
+        <button onclick="checkLocalStorage()">Check localStorage</button>
+        <button onclick="setLanguage('am')">Set Amharic</button>
+        <button onclick="setLanguage('en')">Set English</button>
+        <button onclick="clearLanguage()">Clear Language</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div id="results"></div>
+
+    <script>
+        let resultCount = 0;
+        
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = `<strong>[${new Date().toLocaleTimeString()}]</strong> ${message}`;
+            results.appendChild(div);
+            results.scrollTop = results.scrollHeight;
+            resultCount++;
+        }
+
+        function checkLocalStorage() {
+            try {
+                const storedLanguage = localStorage.getItem('selectedLanguage');
+                if (storedLanguage) {
+                    addResult(`✅ Language found in localStorage: "${storedLanguage}"`, 'success');
+                } else {
+                    addResult(`❌ No language found in localStorage`, 'error');
+                }
+                
+                // Also check all localStorage items
+                const allItems = [];
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    allItems.push(`${key}: ${localStorage.getItem(key)}`);
+                }
+                addResult(`All localStorage items: ${allItems.join(', ') || 'none'}`, 'info');
+            } catch (error) {
+                addResult(`❌ Error accessing localStorage: ${error.message}`, 'error');
+            }
+        }
+
+        function setLanguage(lang) {
+            try {
+                localStorage.setItem('selectedLanguage', lang);
+                addResult(`✅ Set language to "${lang}"`, 'success');
+                checkLocalStorage();
+            } catch (error) {
+                addResult(`❌ Error setting language: ${error.message}`, 'error');
+            }
+        }
+
+        function clearLanguage() {
+            try {
+                localStorage.removeItem('selectedLanguage');
+                addResult(`✅ Cleared language from localStorage`, 'success');
+                checkLocalStorage();
+            } catch (error) {
+                addResult(`❌ Error clearing language: ${error.message}`, 'error');
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            resultCount = 0;
+        }
+
+        // Initial check
+        addResult('Language persistence debug tool loaded', 'info');
+        checkLocalStorage();
+    </script>
+</body>
+</html>
